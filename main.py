@@ -28,7 +28,7 @@ class queue():
     def remove(self, user):
         for i in queue.line:
             if i['id'] == user:
-                del i
+                self.line.remove(i)
     
     def start(self):
         queue.picking = True
