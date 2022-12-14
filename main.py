@@ -36,8 +36,10 @@ class queue():
     def stop(self):
         queue.picking = False
 
-queue = queue(1)
-Thread(target=queue.main).start()
+queue = queue(1) # set the arg to the amount of you time you between each function execution
+Thread(target=queue.main).start() # tbh couldnt put this into class but make sure this is here
 
-queue.add('123', test, 'hello!')
-queue.start()
+queue.add('123', test, 'hello!') # first arg is like a identifier, second arg is the function reference, third arg is the args for that function
+# queue.remove('123') # place identifier into arg to remove a certain queued request, tbh I havent tested out this function yet lol
+queue.start() # starts queue
+# queue.stop() # stops queue
