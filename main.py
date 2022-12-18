@@ -12,9 +12,7 @@ class queue:
 
     def main(self):
         while True:
-            if not self.picking:
-                pass
-            else:
+            if self.picking:
                 if self.line != []:
                     self.line[0]['function'](self.line[0]['arguments'])
                     self.line.remove(self.line[0])
