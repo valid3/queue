@@ -4,7 +4,7 @@ from threading import Thread
 def test(args):
     print(args)
 
-class queue():
+class queue:
     def __init__(self, time):
         self.line = []
         self.time = time
