@@ -12,7 +12,7 @@ class queue():
 
     def main(self):
         while True:
-            if self.picking == False:
+            if not self.picking:
                 pass
             else:
                 if self.line != []:
@@ -22,12 +22,12 @@ class queue():
                     pass
             sleep(self.time)
 
-    def add(self, user, reference, args):
-        queue.line.append({'id':user, 'function':reference, 'arguments':args})
+    def add(self, id, reference, args):
+        queue.line.append({'id' : id, 'function' : reference, 'arguments' : args})
 
-    def remove(self, user):
+    def remove(self, id):
         for i in queue.line:
-            if i['id'] == user:
+            if i['id'] == id:
                 self.line.remove(i)
     
     def start(self):
@@ -36,10 +36,15 @@ class queue():
     def stop(self):
         queue.picking = False
 
+    def position(self, id):
+        for i in queue.line:
+            if i['id'] == id:
+                return queue.line.index(i) + 1
+        return None
+
 queue = queue(1) # set the arg to the amount of you time you between each function execution
 Thread(target=queue.main).start() # tbh couldnt put this into class but make sure this is here
 
 queue.add('123', test, 'hello!') # first arg is like a identifier, second arg is the function reference, third arg is the args for that function
-# queue.remove('123') # place identifier into arg to remove a certain queued request, tbh I havent tested out this function yet lol
 queue.start() # starts queue
-# queue.stop() # stops queue
+print(queue.position('123')) # prints out the index of the identifier in queue, more helpful for the user not server btw
